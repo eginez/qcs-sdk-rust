@@ -69,7 +69,8 @@ async fn execute_simple_circuit() -> bool {
         });
     tracing::info!("Executing");
     let exec_options = ExecutionOptionsBuilder::default()
-        .timeout(Some(Duration::from_secs(1)))
+        .timeout(Some(Duration::from_secs(30)))
+        .connection_timeout(Some(Duration::from_secs(5)))
         .build()
         .unwrap();
 
