@@ -18,6 +18,7 @@ use crate::{
     Executable,
     qpu::api::ExecutionOptions,
 };
+use crate::qpu::api::ExecutionOptionsBuilder;
 
 const PROGRAM: &str = r#"
 DECLARE ro BIT[2]
@@ -67,9 +68,14 @@ async fn execute_simple_circuit() -> bool {
 
         });
     tracing::info!("Executing");
+    let exec_options = ExecutionOptionsBuilder::default()
+        .timeout(Some(Duration::from_secs(1)))
+        .build()
+        .unwrap();
+
     let result = exe
         .with_parameter("theta", 0, PI)
-        .execute_on_qpu("Aspen-M-3", None, &ExecutionOptions::default())
+        .execute_on_qpu("Aspen-M-3", None, &exec_options)
         .await
         .expect("Program should execute successfully");
     

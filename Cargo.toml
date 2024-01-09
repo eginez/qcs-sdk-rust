@@ -37,3 +37,8 @@ rigetti-pyo3 = { version = "0.3.1", features = ["complex"] }
 strip = true
 lto = true
 codegen-units = 1
+
+[patch.crates-io]
+qcs-api-client-grpc= {path = "/Users/eginez/src/qcs-api-client-rust/qcs-api-client-grpc"}
+qcs-api-client-common= {path = "/Users/eginez/src/qcs-api-client-rust/qcs-api-client-common"}
+qcs-api-client-openapi= {path = "/Users/eginez/src/qcs-api-client-rust/qcs-api-client-openapi"}
